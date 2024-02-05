@@ -1,0 +1,62 @@
+/*
+-> Name : adina Faraz
+-> Student ID : 23k-0008
+*/
+#include<iostream>
+using namespace std;
+
+struct Register{
+	string courseID;
+	string courseName;
+};
+
+struct student:Register{
+	string studentID;
+	string fname;
+	string lname;
+	string email;
+	string cell;
+};
+
+int main()
+{
+	student students[5];
+	int i;
+	for(i=0;i<5;i++) //loop to store information
+	{
+	
+	cout<<"Enter course ID: ";
+	getline(cin, students[i].courseID);
+	cout<<"Enter course name: ";
+	getline(cin, students[i].courseName);
+	cout<<endl;
+	cout<<"Enter Student ID: ";
+	getline(cin, students[i].studentID);
+	cout<<endl;
+	cout<<"Enter first name: ";
+	getline(cin, students[i].fname);
+	cout<<endl;
+	cout<<"Enter last name: ";
+	getline(cin, students[i].lname);
+	cout<<endl;
+	cout<<"Enter cell number: ";
+	getline(cin, students[i].cell);
+	cout<<endl;
+	cout<<"Enter email: ";
+	getline(cin, students[i].email);
+	cout<<endl;
+	}
+
+	for(i=0;i<5;i++) //loop to display
+	{
+		
+		cout<<"----------------------------------------------"<<endl;
+		cout<<"Course ID: "<<students[i].courseID<<endl;
+		cout<<"Course Name: "<<students[i].courseName<<endl;
+		cout<<"Student ID: "<<students[i].studentID<<endl;
+		cout<<"first name: "<<students[i].fname<<endl;
+		cout<<"last name: "<<students[i].lname<<endl;
+		cout<<"Cell number: "<<students[i].cell<<endl;
+		cout<<"Email: "<<students[i].email<<endl;
+	}
+}
