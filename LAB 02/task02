@@ -1,0 +1,159 @@
+/*
+-> Name : Adina Faraz
+-> Student ID : 23k-0008
+*/
+#include <iostream>
+using namespace std;
+
+struct Book {
+    string title;
+    string author;
+    string genre;
+    int year;
+};
+
+void find(Book books[], int num) {
+    string name, author;
+    cout << "\nEnter the name of the book: ";
+    getline(cin, name);
+    cout << "\nEnter the name of the author: ";
+    getline(cin, author);
+
+    for (int i = 0; i < num; i++) {
+        if (books[i].title == name || books[i].author == author) {
+            cout << "\nName: " << books[i].title;
+            cout << "\nAuthor: " << books[i].author;
+            cout << "\nGenre: " << books[i].genre;
+            cout << "\nYear: " << books[i].year;
+            break;
+        }
+        else
+    {
+    	cout<<"\nNo book found :(";
+	}
+    }
+	    
+}
+
+void add(Book books[], int num) {
+    int num2;
+    cout << "\nEnter the number of books you want to add: ";
+    cin >> num2;
+    cin.ignore();  // consume the newline character left by cin
+    int newNum = num + num2;
+
+    for (int i = num; i < newNum; i++) {
+        cout << "Enter the name of the book: ";
+        getline(cin, books[i].title);
+
+        cout << "Enter the name of the author: ";
+        getline(cin, books[i].author);
+
+        cout << "Enter the genre of the book: ";
+        getline(cin, books[i].genre);
+
+        cout << "Enter the year of publication of the book: ";
+        cin >> books[i].year;
+        cin.ignore();  // consume the newline character left by cin
+    }
+}
+
+void update(Book books[], int num) {
+    string name, author;
+    cout << "Enter 0 to exit\n";
+    while (1) {
+        cout << "Enter the name of the book:";
+        getline(cin, name);
+
+        if (name == "0") {
+            break;
+        }
+
+        cout << "Enter the name of the author:";
+        getline(cin, author);
+
+        for (int i = 0; i < num; i++) {
+            if (name == books[i].title || author == books[i].author) {
+                cout << "\n-------------------Start updating the book information--------------------\n";
+                cout << "Enter the name of the book: ";
+                getline(cin, books[i].title);
+
+                cout << "Enter the name of the author: ";
+                getline(cin, books[i].author);
+
+                cout << "Enter the genre of the book: ";
+                getline(cin, books[i].genre);
+
+                cout << "Enter the year of publication of the book: ";
+                cin >> books[i].year;
+                cin.ignore();  // consume the newline character left by cin
+            }
+            
+            else
+    {
+    	cout<<"\nNo book found :(";
+	}
+        }
+    }
+}
+
+void display(Book books[], int num) {
+    for (int i = 0; i < num; i++) {
+        cout << "\nName: " << books[i].title;
+        cout << "\nAuthor: " << books[i].author;
+        cout << "\nGenre: " << books[i].genre;
+        cout << "\nYear: " << books[i].year;
+        cout << endl;
+    }
+}
+
+int main() {
+    int num, choice;
+
+    cout << "Enter the number of books you want to register: ";
+    cin >> num;
+    cin.ignore();  // consume the newline character left by cin
+    Book books[num];
+
+    for (int i = 0; i < num; i++) {
+        cout << "Enter the name of the book: ";
+        getline(cin, books[i].title);
+
+        cout << "Enter the name of the author: ";
+        getline(cin, books[i].author);
+
+        cout << "Enter the genre of the book: ";
+        getline(cin, books[i].genre);
+
+        cout << "Enter the year of publication of the book: ";
+        cin >> books[i].year;
+        cin.ignore();  // consume the newline character left by cin
+    }
+
+    while (1) {
+        cout << "\n\n1. Find\n2. Add\n3. Update\n4. Display\n5. Exit\n";
+        cin >> choice;
+        cin.ignore();  // consume the newline character left by cin
+        switch (choice) {
+            case 1:
+                find(books, num);
+                break;
+            case 2:
+                add(books, num);
+                break;
+            case 3:
+                update(books, num);
+                break;
+            case 4:
+                display(books, num);
+                break;
+            case 5:
+                cout << "Exiting program.\n";
+                return 0;
+            default:
+                cout << "Invalid choice!!!\n";
+        }
+    }
+
+    return 0;
+}
