@@ -1,0 +1,40 @@
+/*
+-> Name: Adina Faraz
+-> Student ID: 23k-0008
+You’re given an integer array and a target sum. Your job is to write a recursive function
+in C++ that checks if there’s a subset of the array whose elements sum up to the target
+sum. • Develop a recursive function named hasSubsetSum that accepts an integer array,
+the array’s size, and a target sum as input and returns a boolean indicating whether a
+subset with the specified sum exists. • The function should have the following signature:
+bool hasSubsetSum(int arr[], int size, int targetSum).
+*/
+
+#include <iostream>
+using namespace std;
+
+bool hasSubsetSum(int arr[], int size, int targetSum) {
+    if (targetSum == 0) {
+        return true;
+    }
+
+    if (size == 0) {
+        return false;
+    }
+
+    return hasSubsetSum(arr, size - 1, targetSum) ||
+           hasSubsetSum(arr, size - 1, targetSum - arr[size - 1]);
+}
+
+int main() {
+    int arr[] = {3, 34, 4, 12, 5, 2};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int targetSum = 1;
+
+    if (hasSubsetSum(arr, size, targetSum)) {
+        cout << "Subset with sum " << targetSum << " exists.\n";
+    } else {
+        cout << "No subset with sum " << targetSum << " exists.\n";
+    }
+
+    return 0;
+}
