@@ -1,0 +1,85 @@
+/*
+-> Nam : Adina Faraz
+-> Student ID : 23k-0008
+*/
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+const int MAX_PRODUCTS = 100;
+
+
+struct Product {
+    int productId;
+    string productName;
+    double price;
+    int quantity;
+
+};
+
+
+void addProduct(Product products[], int& numProducts, int id, const string& name, double price, int quantity) {
+    if (numProducts < MAX_PRODUCTS) {
+        products[numProducts].productId = id;
+        products[numProducts].productName = name;
+        products[numProducts].price = price;
+        products[numProducts].quantity = quantity;
+        numProducts++;
+        cout << "Product added successfully.\n";
+    } else {
+        cout << "Maximum number of products reached. Cannot add more products.\n";
+    }
+}
+
+
+void displayProductInfo(const Product products[], int numProducts, int productId) {
+    for (int i = 0; i < numProducts; ++i) {
+        if (products[i].productId == productId) {
+            cout << "Product ID: " << products[i].productId << endl;
+            cout << "Product Name: " << products[i].productName << endl;
+            cout << "Price: $" << products[i].price << endl;
+            cout << "Quantity in Stock: " << products[i].quantity << endl;
+            
+            return;
+        }
+    }
+    cout << "Product not found.\n";
+}
+
+
+void updateProductInfo(Product products[], int numProducts, int productId, double newPrice, int newQuantity) {
+    for (int i = 0; i < numProducts; ++i) {
+        if (products[i].productId == productId) {
+            products[i].price = newPrice;
+            products[i].quantity = newQuantity;
+            cout << "Product information updated successfully.\n";
+            return;
+        }
+    }
+    cout << "Product not found. Update failed.\n";
+}
+
+int main() {
+    
+    Product products[MAX_PRODUCTS];
+    int numProducts = 0;
+
+    
+    addProduct(products, numProducts, 1, "Laptop", 999.99, 10);
+
+    
+    cout << "\nDisplaying product information:\n";
+    displayProductInfo(products, numProducts, 1);
+
+    
+    updateProductInfo(products, numProducts, 1, 1099.99, 5);
+
+    
+    cout << "\nDisplaying updated product information:\n";
+    displayProductInfo(products, numProducts, 1);
+
+    return 0;
+}
