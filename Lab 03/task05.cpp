@@ -145,4 +145,6 @@ int main()
 			cout<<"Invalid input";
 	}
 	}
+
+	return 0;
 }
