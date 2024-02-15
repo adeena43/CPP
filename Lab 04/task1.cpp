@@ -7,6 +7,7 @@ finished the book" when all pages are read. This method should be called from th
 function to monitor reading progress.*/
 
 #include<iostream>
+#include<cstdlib>
 using namespace std;
 
 class Book{
@@ -34,11 +35,28 @@ class Book{
 			this->totalpgs = totalpgs;
 		}
 		
-		void update(int pgs)
+		int update(int pgs)
 		{
 			count+=pgs;
+			
+			if(count<totalpgs)
+			{
+				cout<<"--------------------------------"<<endl;
+				cout<<"Name: "<<name<<endl;
+				cout<<"Author: "<<author<<endl;
+				cout<<"ISBN Number: "<<isbn<<endl;
+				cout<<"Current pages read: "<<count<<endl;
+				cout<<"Total pages: "<<totalpgs<<endl;
+				cout<<"--------------------------------"<<endl;
+				//cout<<"You have read all the pages";
+			}
 			if(count==totalpgs)
 			{
+				cout<<"Name: "<<name<<endl;
+				cout<<"Author: "<<author<<endl;
+				cout<<"ISBN Number: "<<isbn<<endl;
+				cout<<"Current pages read: "<<count<<endl;
+				cout<<"Total pages: "<<totalpgs<<endl;
 				cout<<"You have read all the pages";
 			}
 			
@@ -47,7 +65,8 @@ class Book{
 				cout<<"----------------------------------";
 				cout<<"Invalid pages entered";
 				cout<<"----------------------------------";
-				return;
+				return 0;
+				exit(EXIT_FAILURE);
 			}
 		}
 		
@@ -57,7 +76,7 @@ class Book{
 			cout<<"Author: "<<author<<endl;
 			cout<<"ISBN Number: "<<isbn<<endl;
 			cout<<"Current pages read: "<<count<<endl;
-			cout<<"Total pages read: "<<totalpgs<<endl;
+			cout<<"Total pages: "<<totalpgs<<endl;
 		}
 };
 
@@ -65,7 +84,7 @@ int main(){
 	
 	Book b1("The Valley of fear", "Sherlock Holmes", "098-987-0086-123", 56, 1000);
 	b1.display();
-	b1.update(1002);
+	b1.update(54);
 	cout<<endl;
-	b1.display();
+	//b1.display();
 }
