@@ -58,11 +58,13 @@ int main()
 	for(int i =0; i< 3; i++)
 	{
 		accounts[i].display();
+		accounts[i].deposit(00.0);
+		accounts[i].withdraw(300.0);
 		cout<<endl;
 	}
 	
-	accounts[0].deposit(00.0);
-	accounts[2].display();
-	accounts[0].withdraw(300.0);
-	accounts[0].display();
+
+	//accounts[2].display();
+	
+	//accounts[0].display();
 }
