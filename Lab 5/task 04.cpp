@@ -29,15 +29,16 @@ class BankAccount{
 		
 		void withdraw(double amount)
 		{
-			if(amount<balance)
+			if(balance<amount)
 			{
-				this->balance-=amount;
-				cout<<"Your current balance is: "<<balance<<endl;
+				cout<<"Not sufficient amount!"<<endl;
 			}
 			
 			else
 			{
-				cout<<"You are ghareeb sorry!"<<endl;
+				this->balance-=amount;
+				cout<<"Your current balance is: "<<balance<<endl;
+			
 			}
 		}
 		
@@ -53,15 +54,15 @@ class BankAccount{
 
 int main()
 {
-	BankAccount accounts[3]={BankAccount(845467, "Adina", 5677.9),BankAccount(667889, "Sara", 76777),BankAccount(736677, "Sohail", 98888)};
+	BankAccount accounts[3]={BankAccount(845467, "Adina", 0),BankAccount(667889, "Sara", 76777),BankAccount(736677, "Sohail", 98888)};
 	for(int i =0; i< 3; i++)
 	{
 		accounts[i].display();
 		cout<<endl;
 	}
 	
-	accounts[2].deposit(500.0);
+	accounts[0].deposit(00.0);
 	accounts[2].display();
-	accounts[1].withdraw(200.0);
-	accounts[1].display();
+	accounts[0].withdraw(300.0);
+	accounts[0].display();
 }
