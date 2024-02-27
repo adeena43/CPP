@@ -1,70 +1,47 @@
-/*
-Name -> Adina Faraz
-Student ID -> 23k-0008
-
-*/
-
 #include<iostream>
+#include<string.h>
 using namespace std;
 
-class BankAccount{
+class ValidateString{
 	private:
-		int accountNumber;
-		string accountHolderName;
-		double balance;
-		
+		char* ptr;
+		char* str;
+	
 	public:
-		BankAccount(int accountNumber, string accountHolderName, double balance)
+		ValidateString(char* sentence)
 		{
-			this->accountNumber = accountNumber;
-			this->accountHolderName = accountHolderName;
-			this->balance = balance;
+			str = new char[strlen(sentence)+1];
+			strcpy(str, sentence);
 		}
 		
-		void deposit(double amount)
-		{
-			this->balance+=amount;
-			cout<<"Your current balance is: "<<balance<<endl;
+		~ValidateString(){
+			delete[] str;
 		}
-		
-		void withdraw(double amount)
+		//the function is made constant in order to make sure that it does not alter the string we provided
+		const void checkString()
 		{
-			if(balance<amount)
+			ptr = str;
+			while(*ptr!='\0')
 			{
-				cout<<"Not sufficient amount!"<<endl;
+				if(!(((*ptr)<91  && (*ptr)>64 )||((*ptr)<123  && (*ptr)>96 )))
+				{
+					cout<<"Invalid string"<<endl;
+					return;
+				}
+				
+				ptr++;
 			}
-			
-			else
-			{
-				this->balance-=amount;
-				cout<<"Your current balance is: "<<balance<<endl;
-			
-			}
-		}
-		
-		void display()
-		{
-			cout<<endl;
-			cout<<"Account Number: "<<accountNumber<<endl;
-			cout<<"Account Holder Name: "<<accountHolderName<<endl;
-			cout<<"Balance: "<<balance<<endl;
-			cout<<endl;
 		}
 };
 
 int main()
 {
-	BankAccount accounts[3]={BankAccount(845467, "Adina", 0),BankAccount(667889, "Sara", 76777),BankAccount(736677, "Sohail", 98888)};
-	for(int i =0; i< 3; i++)
-	{
-		accounts[i].display();
-		accounts[i].deposit(00.0);
-		accounts[i].withdraw(300.0);
-		cout<<endl;
-	}
+	ValidateString string1("Hem1@looo");
+	string1.checkString();
 	
-
-	//accounts[2].display();
+	ValidateString string2("Helooo");
+	string2.checkString();
 	
-	//accounts[0].display();
+	ValidateString string3("Hemlooo mic test 1234...");
+	string3.checkString();
 }
