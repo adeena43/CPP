@@ -19,7 +19,7 @@ class printClass{
 			cout<<"Length: "<<peri.length;
 			cout<<endl;
 			cout<<"Width: "<<peri.breadth<<endl;
-			cout<<"Perimeter: "<<peri.length*peri.breadth;
+			
 		}
 };
 int main()
